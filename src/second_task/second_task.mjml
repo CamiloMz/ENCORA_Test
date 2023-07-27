@@ -1,0 +1,166 @@
+!<mjml>
+  <mj-head>
+    <mj-title></mj-title>
+    <mj-attributes>
+      <mj-all font-family="Arial" />
+    </mj-attributes>
+    <mj-style>
+        @media (prefers-color-scheme: dark ) {
+            .dark--border{
+                border-color: #ffffff !important;
+            }
+
+            .dark--button{
+                color: #ffffff !important;
+            }
+        }
+    </mj-style>
+  </mj-head>
+  <mj-body background-color="#F5F5F5" width="440px">
+    <!-- Header -->
+    <mj-section background-color="#FFF" padding="10px 0px">
+      <mj-column width="440px" padding="0">
+        <!-- Logo -->
+        <mj-image
+          src="https://cdn.tripadvisor.com/img2/email/viator_logo_v2.png"
+          alt="Logo Viator"
+          href="https://www.viator.com/"
+          width="110px"
+          padding="0" />
+        <!-- END Logo -->
+      </mj-column>
+    </mj-section>
+    <!-- END Header -->
+
+    <!-- Title -->
+    <mj-section background-color="#FFF" padding="10px 0px">
+      <mj-column width="380px" padding="0">
+        <mj-text
+          font-weight="800"
+          font-size="22px"
+          line-height="26px"
+          align="center"
+          padding="0">
+          Explore the unexpected in ${geo_name}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END Title -->
+
+    <!-- Hero -->
+    <mj-section background-color="#FFF" padding="10px 0px">
+      <mj-column width="440px" padding="0">
+        <mj-image
+          src="${geo_image}"
+          alt="${geo_name} Photo"
+          href="${geo_image}"
+          width="440px"
+          padding="0" />
+      </mj-column>
+    </mj-section>
+    <!-- END Hero -->
+
+    <!-- First Section -->
+    <mj-section background-color="#FFF" padding="10px 0px">
+      <mj-column width="440px" padding="0 15px">
+        <mj-text
+          font-weight="400"
+          font-size="14px"
+          line-height="18px"
+          align="center"
+          padding="0px">
+          Every destination has its must-sees, but we're here to help you see a
+          side of ${geo_name} most travelers miss. Venture off the beaten path and
+          escape the crowds with our hand-picked list of experiences that reveal
+          its true character.
+        </mj-text>
+
+        <!-- CTA -->
+        <mj-button
+          width="100%"
+          padding="15px 0px 0px"
+          inner-padding="15px 10px"
+          border-radius="0"
+          background-color="#AF143E"
+          href="https://www.viator.com/collections/Hidden-Gems-in-${geo_name}/c7"
+          css-class="dark--button">
+          Discover hidden gems
+        </mj-button>
+        <!-- END CTA -->
+      </mj-column>
+    </mj-section>
+    <!-- END First Section -->
+
+    <!-- Second Section -->
+    <mj-section background-color="#FFF" padding="10px 0px 0px">
+      <mj-column width="440px" padding="0 15px">
+        <mj-text
+          font-weight="800"
+          font-size="16px"
+          line-height="21px"
+          align="left"
+          padding="0">
+          Top pick based on your bookings
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <!-- END Second Section -->
+
+    <!-- Two Columns -->
+    <mj-section background-color="#FFF" padding="10px 15px" direction="rtl">
+      <mj-raw>
+        #foreach( $product in $recommended_products )
+      </mj-raw>
+      
+      <mj-column width="50%" padding="10px 0px" vertical-align="middle">
+        <mj-image
+          src="${product.product_photo_url}"
+          alt="${geo_name} City"
+          href="${product.product_link}"
+          padding="0" />
+      </mj-column>
+
+      <mj-column width="50%" padding="10px 10px 0px 0px" vertical-align="middle">
+        <mj-text
+          font-weight="400"
+          font-size="14px"
+          line-height="16px"
+          align="left"
+          padding="5px 0 10px">
+          ${product.product_name}
+        </mj-text>
+
+        <mj-table padding="0 0 5px">
+          <tr>
+            <td width="70px">
+              <img
+                src="https://cdn.tripadvisor.com/img2/email/rex/ratingstar${product.product_rating}.png"
+                alt="rate stars"
+                width="68px" />
+            </td>
+            <td style="padding: 0px 5px">${product.product_review_count} reviews</td>
+          </tr>
+        </mj-table>
+        
+        <!-- CTA -->
+        <mj-button
+          background-color="transparent"
+          border="1px solid #000"
+          color="#AF143E"
+          border-radius="0"
+          width="100%"
+          padding="10px 0px"
+          inner-padding="15px 10px"
+          href="${product.product_link}"
+          css-class="dark--border">
+          See details
+        </mj-button>
+        <!-- END CTA -->
+      </mj-column>
+      <mj-raw>
+        #end
+      </mj-raw>
+    </mj-section>
+    <!-- END Two Columns -->
+  </mj-body>
+</mjml>
